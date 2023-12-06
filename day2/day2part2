@@ -1,0 +1,34 @@
+def game(file):
+    f = open(file, "r")
+    line = f.readline()
+    sum = 0
+    while(line != ""):
+        x = line.split(": ")
+        l = x[1].split("; ")
+        cols_min = [0,0,0]
+        for wurf in l:
+            new = legal(wurf)
+            for c in range(3):
+                if new[c] > cols_min[c]:
+                    cols_min[c] = new[c]
+        sum += cols_min[0] * cols_min[1] * cols_min[2]
+        line = f.readline()
+    return sum
+        
+
+def legal(wurf):
+    r = 0
+    g = 0
+    b = 0
+    wurf = wurf.split(", ")
+    for col in wurf:
+        if " r" in col:
+            r = int(col[0:2])
+        elif " g" in col:
+            g = int(col[0:2])
+        elif " b" in col:
+            b = int(col[0:2])
+    return [r,g,b]
+
+
+print(game("input.txt"))
