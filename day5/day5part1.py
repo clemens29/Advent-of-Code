@@ -1,11 +1,14 @@
-def convert(arr, table):
-    for i in arr:
-        dest = i[0]
-        src = i[1]
-        ran = i[2]
-        for j in range(int(ran)):
-            table[int(src)+j] = int(dest)+j
-    return table
+def conv(arr, curr_num):
+    for nums in arr:
+        dest = int(nums[0])
+        src = int(nums[1])
+        rng = int(nums[2])
+        print(dest, src, rng)
+        if src <= curr_num and src+rng-1 >= curr_num:
+            curr_num = (curr_num - src ) + dest
+        print(curr_num)
+        print("\n")
+    return curr_num
 
 def seeds(file):
     arr = []
@@ -20,17 +23,19 @@ def seeds(file):
         if line[0].isdigit():
             arr[j].append(line.split(" "))
     seeds = arr[0][0]
-    table = [i for i in range(int(max(seeds))+1)]
     for k in range(len(arr)):
         for l in range(len(arr[k])):
             arr[k][l][len(arr[k][l])-1] = arr[k][l][len(arr[k][l])-1].split("\n")[0]
     del arr[0]
-    for conv in arr:
-        table = convert(conv, table)
-    min = int(seeds[0])
-    for i in seeds:
-        if int(table[int(i)]) < min:
-            min = int(table[int(i)])
-    return min
+    loc = []
+    for seed in seeds:
+        curr_num = int(seed)
+        for j in arr:
+            curr_num = conv(j, curr_num)
+        if seed == "14":
+            print("\n")
+            print(curr_num)
+        loc.append(curr_num)
+    return (sorted(loc))
 
-print(seeds("input.txt"))
+print(seeds("test.txt"))

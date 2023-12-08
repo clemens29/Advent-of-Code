@@ -29,11 +29,11 @@ def adj_nums(file):
                                     if f[d][c] != "." and not f[d][c].isdigit():
                                         check = False   
                                         print(f[d][c]) 
+                                    if f[d][c] == "*":
+                                         
                 if not check:
                     sum += int(num)
         j += 1
     return sum
-            
-
-
-print(adj_nums("k.txt"))
+        
+print(adj_nums("test.txt"))
