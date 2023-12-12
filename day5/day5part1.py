@@ -4,8 +4,8 @@ def conv(arr, curr_num):
         src = int(nums[1])
         rng = int(nums[2])
         print(dest, src, rng)
-        if src <= curr_num and src+rng-1 >= curr_num:
-            curr_num = (curr_num - src ) + dest
+        if src <= curr_num and src+rng > curr_num:
+            curr_num = dest + curr_num - src
         print(curr_num)
         print("\n")
     return curr_num
@@ -36,6 +36,6 @@ def seeds(file):
             print("\n")
             print(curr_num)
         loc.append(curr_num)
-    return (sorted(loc))
+    return min(sorted(loc))
 
 print(seeds("test.txt"))
