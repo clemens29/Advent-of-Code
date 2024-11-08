@@ -4,7 +4,7 @@ import Template.Template;
 import java.io.IOException;
 import java.util.List;
 
-public class Day2{
+public class Day2 {
 
     public static void main(String[] args) {
         try {
