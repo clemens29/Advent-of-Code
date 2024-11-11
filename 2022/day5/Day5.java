@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import javax.sound.midi.SysexMessage;
-
-
 public class Day5 {
     public static void main(String[] args) {
         try {

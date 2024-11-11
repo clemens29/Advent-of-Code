@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Day1_1 {
+public class Day1 {
     
     public static List<String> readInputFile(String fileName) throws IOException {
         // Define the path to the file (in the same folder as the source file)
