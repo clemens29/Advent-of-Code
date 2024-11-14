@@ -12,4 +12,15 @@ public class Template {
         Path path = Paths.get(dir, fileName);
         return Files.readAllLines(path);
     }
+
+    public static int[][] convertStringListToIntArray(List<String> input) {
+        int[][] res = new int[input.size()][input.get(0).length()];
+        for (int i = 0; i < input.size(); i++) {
+            String str = input.get(i);
+            for (int j = 0; j < str.length(); j++) {
+                res[i][j] = Character.getNumericValue(str.charAt(j));
+            }
+        }
+        return res;
+    }
 }
