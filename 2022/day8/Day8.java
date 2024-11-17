@@ -35,9 +35,7 @@ public class Day8 {
             for (int i = 1; i < width-1; i++) {
                 for (int j = 1; j < heigth-1; j++) {
                     int curr = input[i][j];
-                    System.out.println("Current tree: " + curr);
                     int score = checkTree2(input, i, j, curr);
-                    System.out.println("Score: " + score);
                     if (score > highest_score) {
                         highest_score = score;
                     }
@@ -109,7 +107,7 @@ public class Day8 {
             if (input[k][j] >= curr) break;
         }
     
-        System.out.println("Left: " + leftScore + ", Right: " + rightScore + ", Up: " + upScore + ", Down: " + downScore);
+        //System.out.println("Left: " + leftScore + ", Right: " + rightScore + ", Up: " + upScore + ", Down: " + downScore);
         return leftScore * rightScore * upScore * downScore;
     }
     
