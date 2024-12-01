@@ -3,15 +3,15 @@ package day11;
 import java.util.ArrayList;
 
 public class Monkey {
-    ArrayList<Integer> starting_items;
+    ArrayList<Long> starting_items;
     String operation;
     int test_op;
-    int if_true;
-    int if_false;
+    long if_true;
+    long if_false;
     int inspected_items;
     int name;
 
-    public Monkey(ArrayList<Integer> starting_items, String operation, int test_op, int if_true, int if_false, int name) {
+    public Monkey(ArrayList<Long> starting_items, String operation, int test_op, long if_true, long if_false, int name) {
         this.starting_items = starting_items;
         this.operation = operation;
         this.test_op = test_op;
@@ -30,14 +30,14 @@ public class Monkey {
         return s;
     }
 
-    public int[] operate(int item) {
+    public long[] operate(long item) {
             inspected_items++;
             String[] ops = operation.split(" ");
             if (ops[0].equals("*")) {
                 if (ops[1].equals("old")) {
                     item *= item;
                 } else {
-                    item *= Integer.parseInt(ops[1]);
+                    item *= Long.parseLong(ops[1]);
                 }
             } else if (ops[0].equals("+")) {
                 if (ops[1].equals("old")) {
@@ -48,9 +48,9 @@ public class Monkey {
             }
             item /= 3;
             if (item % test_op == 0) {
-                return new int[]{if_true, item};
+                return new long[]{if_true, item};
             } else {
-                return new int[]{if_false, item};
+                return new long[]{if_false, item};
             }
     }
 }

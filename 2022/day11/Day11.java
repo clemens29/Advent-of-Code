@@ -14,16 +14,16 @@ public class Day11 {
 
             // Initialisierung der Affen und deren Attribute
             for (int i = 0; i < num_monkeys; i++) {
-                ArrayList<Integer> starting_items = new ArrayList<>();
+                ArrayList<Long> starting_items = new ArrayList<>();
                 String[] items = input.get(7 * i + 1).split(": ")[1].split(", ");
                 for (String item : items) {
-                    starting_items.add(Integer.parseInt(item));
+                    starting_items.add(Long.parseLong(item));
                 }
 
                 String operation = input.get(7 * i + 2).split("= old ")[1];
                 int test_op = Integer.parseInt(input.get(7 * i + 3).split(" ")[5]);
-                int if_true = Integer.parseInt(input.get(7 * i + 4).split(" ")[9]);
-                int if_false = Integer.parseInt(input.get(7 * i + 5).split(" ")[9]);
+                long if_true = Long.parseLong(input.get(7 * i + 4).split(" ")[9]);
+                long if_false = Long.parseLong(input.get(7 * i + 5).split(" ")[9]);
 
                 monkeys.add(new Monkey(starting_items, operation, test_op, if_true, if_false, i));
             }
@@ -33,20 +33,20 @@ public class Day11 {
             for (int round = 0; round < rounds; round++) {
                 for (Monkey monkey : monkeys) {
                     // Liste der Items, die geworfen werden sollen
-                    List<int[]> itemsToThrow = new ArrayList<>();
+                    List<long[]> itemsToThrow = new ArrayList<>();
 
-                    for (int item : monkey.starting_items) {
-                        int[] result = monkey.operate(item);
+                    for (long item : monkey.starting_items) {
+                        long[] result = monkey.operate(item);
                         itemsToThrow.add(result);
                     }
 
                     
                     monkey.starting_items.clear();
 
-                    for (int[] result : itemsToThrow) {
-                        int throwTo = result[0];
-                        int value = result[1];
-                        monkeys.get(throwTo).starting_items.add(value);
+                    for (long[] result : itemsToThrow) {
+                        long throwTo = result[0];
+                        long value = result[1];
+                        monkeys.get((int)throwTo).starting_items.add(value);
                     }
 
                 }
