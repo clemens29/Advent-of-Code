@@ -2,7 +2,6 @@ package day4;
 import Template.Template;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Day4 {
