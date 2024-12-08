@@ -1,10 +1,10 @@
-package Template.day;
+package day9;
 import Template.Template;
 
 import java.io.IOException;
 import java.util.List;
 
-public class Day {
+public class Day9 {
 
     public static void main(String[] args) {
         try {
@@ -17,7 +17,7 @@ public class Day {
             } else {
                 System.out.println(day + " of Advent of Code 2024");
             }
-
+            
             inputLines.forEach(System.out::println);
 
         } catch (IOException e) {
