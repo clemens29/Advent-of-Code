@@ -65,7 +65,6 @@ public class Day8 {
                 for (int i = 0; i < positions.size(); i++) {
                     int x1 = positions.get(i)[0];
                     int y1 = positions.get(i)[1];
-                    System.out.println(c + " " + x1 + " " + y1);
                     for (int j = 0; j < positions.size(); j++) {
                         if (i != j) {
                             int x2 = positions.get(j)[0];
