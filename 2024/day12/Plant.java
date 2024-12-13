@@ -59,50 +59,14 @@ public class Plant {
         for (List<Integer[]> region : regions) {
             sides[i] = 0;
     
-            // Berechne die Anzahl der Ecken
-            int cornerCount = countCorners(region);
-            System.out.println("Eckenanzahl: " + cornerCount);
-            
+           
             i++;
         }
     }
     
-    // Zählt die Ecken in der Region
     private int countCorners(List<Integer[]> region) {
         int cornerCount = 0;
         
-        // Definiere die vier möglichen Nachbarschaftsrichtungen (oben, rechts, unten, links)
-        int[] x_directions = {0, 1, 0, -1};
-        int[] y_directions = {1, 0, -1, 0};
-        
-        // Gehe durch jede Position in der Region
-        for (Integer[] pos : region) {
-            int x = pos[0];
-            int y = pos[1];
-            
-            // Zähle die fehlenden benachbarten Zellen (Nachbarn außerhalb der Region)
-            int missingSides = 0;
-            
-            // Überprüfe alle vier Nachbarn
-            for (int j = 0; j < 4; j++) {
-                int new_x = x + x_directions[j];
-                int new_y = y + y_directions[j];
-                
-                // Prüfe, ob der Nachbar außerhalb der Region ist
-                boolean contains = region.stream().anyMatch(p -> p[0] == new_x && p[1] == new_y);
-                
-                // Wenn der Nachbar nicht vorhanden ist, dann fehlt eine Seite
-                if (!contains) {
-                    missingSides++;
-                }
-            }
-    
-            // Wenn mindestens 2 benachbarte Seiten fehlen, ist es eine Ecke
-            if (missingSides >= 2) {
-                cornerCount++;
-                System.out.println("Fehlende Seite bei: " + x+ ", " + y);
-            }
-        }
         
         return cornerCount;
     }
