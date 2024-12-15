@@ -24,6 +24,7 @@ public class Day12 {
             int sum2 = 0;
             int width = inputLines.get(0).length();
             int height = inputLines.size();
+            System.out.println("width: " + width + " height: " + height);
             HashMap<Character, List<List<Integer[]>>> regions = new HashMap<>();
 
             for (int i = 0; i < height; i++) {

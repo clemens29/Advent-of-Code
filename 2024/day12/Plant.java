@@ -55,26 +55,18 @@ public class Plant {
     }
 
     public void calcSides() {
+        // create a list only for the outer perimeter of the positions in the region
         int i = 0;
         for (List<Integer[]> region : regions) {
-            sides[i] = 0;
-    
-           
-            i++;
+            boolean[][] grid = new boolean[140][140];
+            for (Integer[] pos : region) {
+                grid[pos[0]][pos[1]] = true;
+            }
+            Integer[] first = region.get(0);
+            
         }
     }
     
-    private int countCorners(List<Integer[]> region) {
-        int cornerCount = 0;
-        
-        
-        return cornerCount;
-    }
-    
-    
-    
-    
-
     public int getSum(boolean part2) {
         int sum = 0;
         calcArea();
