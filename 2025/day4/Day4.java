@@ -22,21 +22,26 @@ public class Day4 {
             int height = inputLines.size();
             int width = inputLines.get(0).length();
 
+            char[][] grid = new char[inputLines.size()][inputLines.get(0).length()];
+
+            for (int i = 0; i < height; i++) {
+                grid[i] = inputLines.get(i).toCharArray();
+            }
+
             for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
                     int count = 0;
-                    if (inputLines.get(i).charAt(j) != '@') continue;
+                    if (grid[i][j] != '@') continue;
                     for (int k = -1; k <= 1; k++) {
                         for (int l = -1; l <= 1; l++) {
                             if (k == 0 && l == 0) continue;
                             if (i+k >= 0 && i+k < height && j+l >= 0 && j+l < width ) {
-                                if (inputLines.get(i+k).charAt(j+l) == '@') {
+                                if (grid[i+k][j+l] == '@') {
                                     count++;
                                 }
                             }
                         }
                     }
-                    System.out.println(count);
                     if (count < 4) {
                         sum1++;
                     }
@@ -47,14 +52,8 @@ public class Day4 {
 
             sum1 = 0L;
 
-            char[][] grid = new char[inputLines.size()][inputLines.get(0).length()];
 
-            for (int i = 0; i < height; i++) {
-                grid[i] = inputLines.get(i).toCharArray();
-            }
-
-
-            for (int round = 0; round < 10000; round++) {
+            for (int round = 0; round < 50; round++) {
                 for (int i = 0; i < height; i++) {
                     for (int j = 0; j < width; j++) {
                         int count = 0;
@@ -75,15 +74,10 @@ public class Day4 {
                         }
                     }
                 }
-                System.out.println(sum1);
             }
             
 
             System.out.println("Part2: " + sum1);
-
-            for (int i = 0; i < height; i++) {
-                    System.out.println(grid[i]);
-                }
             
             
 
