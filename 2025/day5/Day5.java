@@ -19,7 +19,7 @@ public class Day5 {
                 System.out.println(day + " of Advent of Code 2025");
             }
 
-            long sum1 = 0;
+            long sum = 0;
             boolean rangepart = true;
             ArrayList<long[]> ranges = new ArrayList<>();
 
@@ -37,41 +37,38 @@ public class Day5 {
                     long number = Long.parseLong(line);
                     for (long[] range : ranges) {
                         if (number >= range[0] && number <= range[1]) {
-                            sum1++;
+                            sum++;
                             break;
                         }
                     }
                 }
             }
 
-            System.out.println("Part 1: " + sum1);
+            System.out.println("Part 1: " + sum);
 
-            sum1 = 0;
-            ranges.clear();
-            for (String line : inputLines) {
-                if (!line.isBlank()) {
-                    String[] bounds = line.split("-");
-                    long start = Long.parseLong(bounds[0]);
-                    long end = Long.parseLong(bounds[1]);
-                    for (long[] existingRange : ranges) {
-                        if (!(end < existingRange[0] || start > existingRange[1])) {
-                            start = Math.min(start, existingRange[0]);
-                            end = Math.max(end, existingRange[1]);
-                            ranges.remove(existingRange);
-                            break;
-                        }
-                    }
+            sum = 0;
+            ranges.sort((a, b) -> Long.compare(a[0], b[0]));
 
-
-                    ranges.add(new long[]{start, end});
-                } else break;
-            }
+            ArrayList<long[]> mergedRanges = new ArrayList<>();
 
             for (long[] range : ranges) {
-                sum1 += (range[1] - range[0] + 1);
+                if (mergedRanges.isEmpty()) {
+                    mergedRanges.add(range);
+                } else {
+                    long[] lastRange = mergedRanges.get(mergedRanges.size() - 1);
+                    if (range[0] <= lastRange[1] + 1) {
+                        lastRange[1] = Math.max(lastRange[1], range[1]);
+                    } else {
+                        mergedRanges.add(range);
+                    }
+                }
             }
 
-            System.out.println("Part 2: " + sum1);
+            for (long[] range : mergedRanges) {
+                sum += (range[1] - range[0] + 1);
+            }
+
+            System.out.println("Part 2: " + sum);
 
         } catch (IOException e) {
             System.out.println("Error reading input file: " + e.getMessage());
